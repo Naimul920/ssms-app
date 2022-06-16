@@ -19,3 +19,13 @@ Route::get('/about-us', [HomeController::class, 'about'])->name('about');
 Route::get('/all-courses', [HomeController::class, 'course'])->name('course');
 Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact');
 Route::get('/login-registration', [HomeController::class, 'login'])->name('login-registration');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
