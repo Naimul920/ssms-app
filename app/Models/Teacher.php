@@ -65,4 +65,13 @@ class Teacher extends Model
         self::$teacher->image       = self::$imageUrl;
         self::$teacher->save();
     }
+    public static function deleteTeacher($id)
+    {
+        self::$teacher=Teacher::find($id);
+        if (file_exists(self::$teacher->image))
+        {
+            unlink(self::$teacher->image);
+        }
+        self::$teacher->delete();
+    }
 }

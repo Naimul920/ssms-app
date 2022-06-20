@@ -37,6 +37,7 @@ class TeacherController extends Controller
     }
     public function delete($id)
     {
-        return 'delete';
+        Teacher::deleteTeacher($id);
+        return redirect('/manage-teacher')->with('message','Teacher delete successful');
     }
 }

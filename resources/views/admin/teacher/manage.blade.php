@@ -40,7 +40,7 @@
                                     <i class="fa fa-edit"></i>
                                 </a>
 
-                                <a href="{{route('teacher.delete',['id'=>$teacher->id])}}" class="btn btn-danger mx-auto">
+                                <a href="{{route('teacher.delete',['id'=>$teacher->id])}}" class="btn btn-danger mx-auto " onclick="return confirm('Are you sure you want to delete teacher')">
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </td>
