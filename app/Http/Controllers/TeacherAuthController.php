@@ -24,9 +24,9 @@ class TeacherAuthController extends Controller
         {
             if (password_verify($request->password, $this->teacher->password))
             {
-               Session::put('id', $this->teacher->id);
-               Session::put('id', $this->teacher->name);
-               Session::put('id', $this->teacher->image);
+               Session::put('teacher_id', $this->teacher->id);
+               Session::put('teacher_name', $this->teacher->name);
+               Session::put('teacher_image', $this->teacher->image);
 
                return redirect('/teacher-dashboard');
             }
@@ -39,5 +39,12 @@ class TeacherAuthController extends Controller
         {
             return redirect()->back()->with('message','Your email is invalid');
         }
+    }
+    public function logout()
+    {
+       Session::forget('teacher_id');
+       Session::forget('teacher_name');
+       Session::forget('teacher_image');
+       return redirect('/teacher-login');
     }
 }

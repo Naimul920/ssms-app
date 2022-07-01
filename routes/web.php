@@ -7,6 +7,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeacherAuthController;
 use App\Http\Controllers\TeacherDashboardController;
+use App\Http\Controllers\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,14 @@ Route::get('/login-registration', [HomeController::class, 'login'])->name('login
 
 Route::get('/teacher-login', [TeacherAuthController::class, 'login'])->name('teacher.login');
 Route::post('/teacher-login-check', [TeacherAuthController::class, 'loginCheck'])->name('teacher.login-check');
-Route::get('/teacher-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher.dashboard');
+Route::post('/teacher-logout', [TeacherAuthController::class, 'logout'])->name('teacher.logout');
+
+Route::get('/teacher-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher.dashboard')->middleware('teacher');
+
+Route::get('/add-course', [CourseController::class, 'add'])->name('course.add')->middleware('teacher');
+Route::get('/manage-course', [CourseController::class, 'manage'])->name('course.manage')->middleware('teacher');
+Route::post('/new-course', [CourseController::class, 'create'])->name('course.new')->middleware('teacher');
+
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
