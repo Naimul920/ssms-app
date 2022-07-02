@@ -25,8 +25,6 @@
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Course Fee</th>
-                            <th>Short Description</th>
-                            <th>Long Description</th>
                             <th>Image</th>
                             <th>Action</th>
                         </tr>
@@ -39,8 +37,6 @@
                                 <td>{{$course->start_date}}</td>
                                 <td>{{$course->end_date}}</td>
                                 <td>{{$course->fee}}</td>
-                                <td>{{$course->short_description}}</td>
-                                <td>{{$course->long_description}}</td>
                                 <td>
                                     <img src="{{asset($course->image)}}" alt="" height="70" width="60">
                                 </td>
@@ -49,7 +45,7 @@
                                         <i class="fa fa-edit"></i>
                                     </a>
 
-                                    <a href="{{route('teacher.delete',['id'=>$course->id])}}" class="btn btn-danger mx-auto " onclick="return confirm('Are you sure you want to delete teacher')">
+                                    <a href="{{route('course.delete',['id'=>$course->id])}}" class="btn btn-danger mx-auto " onclick="return confirm('Are you sure you want to delete course')">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>

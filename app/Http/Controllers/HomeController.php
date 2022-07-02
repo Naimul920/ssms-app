@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Course;
 
 class HomeController extends Controller
 {
+    private $courses;
     public function index()
     {
-        return view('website.home.home');
+        $this->courses=Course::all();
+        return view('website.home.home',['courses'=>$this->courses]);
     }
 
     public function about()
@@ -29,6 +32,11 @@ class HomeController extends Controller
     public function login()
     {
         return view('website.login.login');
+    }
+    public function detail($id)
+    {
+        $this->course=Course::find($id);
+        return view('website.course.detail', ['course'=>$this->course]);
     }
 
 }

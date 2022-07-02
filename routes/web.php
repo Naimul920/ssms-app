@@ -23,6 +23,7 @@ use App\Http\Controllers\CourseController;
 Route::get('/',[HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [HomeController::class, 'about'])->name('about');
 Route::get('/all-courses', [HomeController::class, 'course'])->name('course');
+Route::get('/detail-courses/{id}', [HomeController::class, 'detail'])->name('course.detail');
 Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact');
 Route::get('/login-registration', [HomeController::class, 'login'])->name('login-registration');
 
@@ -37,6 +38,7 @@ Route::get('/manage-course', [CourseController::class, 'manage'])->name('course.
 Route::post('/new-course', [CourseController::class, 'create'])->name('course.new')->middleware('teacher');
 Route::get('/edit-course/{id}', [CourseController::class, 'edit'])->name('course.edit')->middleware('teacher');
 Route::post('/update-course/{id}', [CourseController::class, 'update'])->name('course.update')->middleware('teacher');
+Route::get('/delete-course/{id}', [CourseController::class, 'delete'])->name('course.delete')->middleware('teacher');
 
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {

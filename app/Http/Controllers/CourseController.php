@@ -32,7 +32,13 @@ class CourseController extends Controller
     public function update(Request $request, $id)
     {
         Course::updateCourse($request,$id);
-        return redirect('/manage-course')->with('message','New course create successfull');
+        return redirect('/manage-course')->with('message','Course Update successfull');
 //        return $request->all();
     }
+    public function delete($id)
+    {
+        Course::deleteCourse($id);
+        return redirect('/manage-course')->with('message','Course delete successfull');
+    }
+
 }
