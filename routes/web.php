@@ -35,6 +35,8 @@ Route::get('/teacher-dashboard', [TeacherDashboardController::class, 'index'])->
 Route::get('/add-course', [CourseController::class, 'add'])->name('course.add')->middleware('teacher');
 Route::get('/manage-course', [CourseController::class, 'manage'])->name('course.manage')->middleware('teacher');
 Route::post('/new-course', [CourseController::class, 'create'])->name('course.new')->middleware('teacher');
+Route::get('/edit-course/{id}', [CourseController::class, 'edit'])->name('course.edit')->middleware('teacher');
+Route::post('/update-course/{id}', [CourseController::class, 'update'])->name('course.update')->middleware('teacher');
 
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
