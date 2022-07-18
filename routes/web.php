@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeacherAuthController;
 use App\Http\Controllers\TeacherDashboardController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\AdminCourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,7 @@ Route::post('/new-course', [CourseController::class, 'create'])->name('course.ne
 Route::get('/edit-course/{id}', [CourseController::class, 'edit'])->name('course.edit')->middleware('teacher');
 Route::post('/update-course/{id}', [CourseController::class, 'update'])->name('course.update')->middleware('teacher');
 Route::get('/delete-course/{id}', [CourseController::class, 'delete'])->name('course.delete')->middleware('teacher');
+Route::get('/detail-course/{id}', [CourseController::class, 'detail'])->name('course.detail')->middleware('teacher');
 
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
@@ -54,4 +56,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/add-user', [UserController::class,'add'])->name('user.add');
     Route::get('/manage-user', [UserController::class,'manage'])->name('user.manage');
     Route::post('/new-user', [UserController::class,'create'])->name('user.new');
+
+    Route::get('/admin-manage-course', [AdminCourseController::class,'manage'])->name('admin.manage-course');
+
 });

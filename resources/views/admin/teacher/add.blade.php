@@ -20,12 +20,14 @@
                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Full name</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" name="name" id="horizontal-firstname-input"/>
+                                <span class="text-danger">{{$errors->has('name')?$errors->first('name'):''}}</span>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
                             <label for="horizontal-email-input" class="col-sm-3 col-form-label">Email</label>
                             <div class="col-sm-9">
                                 <input type="email" class="form-control" name="email" id="horizontal-email-input"/>
+                                <span class="text-danger">{{$errors->has('email')?$errors->first('email'):''}}</span>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
@@ -50,6 +52,7 @@
                             <label for="horizontal-password-input3" class="col-sm-3 col-form-label">Teacher Image</label>
                             <div class="col-sm-9">
                                 <input type="file" class="form-control-file" name="image" id="horizontal-password-input3"/>
+                                <span class="text-danger">{{$errors->has('image')?$errors->first('image'):''}}</span>
                             </div>
                         </div>
                         <div class="form-group row justify-content-end">

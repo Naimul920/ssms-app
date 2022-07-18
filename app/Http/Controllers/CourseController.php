@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
+use Session;
 
 class CourseController extends Controller
 {
@@ -16,8 +17,13 @@ class CourseController extends Controller
     }
     public function manage()
     {
-        $this->courses=Course::all();
+        $this->courses=Course::where('teacher_id', Session::get('teacher_id'))->get();
         return view('teacher.course.manage',['courses'=>$this->courses]);
+    }
+    public function detail($id)
+    {
+        $this->course=Course::find($id);
+        return view('teacher.course.detail',['course'=>$this->course]);
     }
     public function create(Request $request)
     {

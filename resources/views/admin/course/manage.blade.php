@@ -1,4 +1,4 @@
-@extends('teacher.master')
+@extends('admin.master')
 @section('title')
     MANAGE COURSE
 @endsection
@@ -41,9 +41,6 @@
                                     <img src="{{asset($course->image)}}" alt="" height="70" width="60">
                                 </td>
                                 <td>
-                                    <a href="{{route('course.detail',['id'=>$course->id])}}" class="btn btn-primary btn-sm ">
-                                        <i class="fa fa-book-open"></i>
-                                    </a>
                                     <a href="{{route('course.edit',['id'=>$course->id])}}" class="btn btn-outline-info ">
                                         <i class="fa fa-edit"></i>
                                     </a>

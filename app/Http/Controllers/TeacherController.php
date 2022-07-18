@@ -17,6 +17,14 @@ class TeacherController extends Controller
     }
     public function create(Request $request)
     {
+        $request->validate([
+            'name'=>'required',
+            'email'=>'email:rfc,dns|unique:teachers,email',
+            'image'=>'required|image',
+        ],[
+            'name.required'=>'Vai please name ta dan.',
+            'image.required'=>'Vai please image ta dan.'
+        ]);
         Teacher::newTeacher($request);
         return redirect('/add-teacher')->with('message','Teacher Create Successfull');
     }
