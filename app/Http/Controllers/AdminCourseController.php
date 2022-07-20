@@ -12,6 +12,7 @@ class AdminCourseController extends Controller
     public function manage()
     {
         $this->courses=Course::all();
+        return $this->courses;
         return view('admin.course.manage',['courses'=>$this->courses]);
     }
 }

@@ -22,10 +22,11 @@
                         <tr>
                             <th>#</th>
                             <th>Course Title</th>
+                            <th>Course Fee</th>
                             <th>Start Date</th>
                             <th>End Date</th>
-                            <th>Course Fee</th>
-                            <th>Image</th>
+                            <th>Instractor Info</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -34,12 +35,11 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$course->title}}</td>
+                                <td>{{$course->fee}}</td>
                                 <td>{{$course->start_date}}</td>
                                 <td>{{$course->end_date}}</td>
-                                <td>{{$course->fee}}</td>
-                                <td>
-                                    <img src="{{asset($course->image)}}" alt="" height="70" width="60">
-                                </td>
+                                <td>{{$course->teacher_id}}</td>
+                                <td>{{$course->status}}</td>
                                 <td>
                                     <a href="{{route('course.edit',['id'=>$course->id])}}" class="btn btn-outline-info ">
                                         <i class="fa fa-edit"></i>
